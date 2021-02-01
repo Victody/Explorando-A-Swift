@@ -20,29 +20,89 @@ This is also a lot of votes for Swift to use type inference to determine what ki
  
 //:  - callout(Exercise): Create two variables, one to count `yes` votes and one to count `no` votes. Each should start off with a value of zero.
 //:  - callout(Exercise): Create a `for…in` loop that iterates over one of the vote arrays and checks the value of each vote. If the vote is `true`, the loop should add one vote to the `yes` variable. If it's `false`, it should add one vote to the `no` variable.
+var yesCount = Int()
+var noCount = Int()
 
+for vote in shouldMascotChangeVotes{
+    if vote{
+        yesCount += 1
+    } else {
+        noCount += 1
+    }
+}
 //:  - callout(Exercise): After the loop has finished, write an `if` statement that compares the two values and prints a different message based on whether the vote passed or failed.
-
+if yesCount > noCount {
+    print("A reforma foi aprovada com \(yesCount) votos")
+}else{
+    print("A reforma não foi aprovada")
+}
 /*:
  - callout(Exercise): Test your code by calling the `for…in` loop on each of the vote arrays.\
-Which measures won by popular vote?
+ Which measures won by popular vote?
  */
+for vote in shouldInstallCoffeeVendingMachineVotes{
+    if vote{
+        yesCount += 1
+    } else {
+        noCount += 1
+    }
+}
+
+if yesCount > noCount {
+    print("A reforma foi aprovada com \(yesCount) votos")
+}else{
+    print("A reforma não foi aprovada")
+}
+
+for vote in shouldHaveMorePollOptionsVotes{
+    if vote{
+        yesCount += 1
+    } else {
+        noCount += 1
+    }
+}
+
+if yesCount > noCount {
+    print("A reforma foi aprovada com \(yesCount) votos")
+}else{
+    print("A reforma não foi aprovada")
+}
+
 
 /*:
-### Extension:
+ ### Extension:
  Your `for…in` loop would be even more powerful if you could easily reuse it. The easiest way to reuse code is to put it in a function.
-
+ 
  - callout(Exercise): Write a function that takes two arguments: a string describing the issue being voted on and an array with the issue's `Bool` votes. Move the `for…in` loop and the `if` statement *inside* the function, so it prints the results when you call the function with a particular issue's arguments. You should be able to call the function like this:
-
-```
+ 
+ ```
  printResults(forIssue: "Should we change the mascot?", withVotes:shouldMascotChangeVotes)
-```
-
+ ```
+ 
  A message like this should be printed to the console:\
  `Should we change the mascot? 54 yes, 23 no`
  */
 // Add your vote-processing function here:
+func electionResults(question: String ,votes: [Bool]){
+    var yesCount = Int()
+    var noCount = Int()
+    print(question)
+    for vote in votes{
+        if vote{
+            yesCount += 1
+        }else{
+            noCount += 1
+        }
+    }
+    if yesCount > noCount{
+        print("A reforma foi aprovada com \(yesCount) votos")
+    } else{
+        print("A reforma não foi aprovada")
+    }
+}
+let questionVotes = "Devemos mudar o Mascote?"
 
+electionResults(question: questionVotes, votes: shouldMascotChangeVotes)
 /*:
 [Previous](@previous)  |  page 15 of 18  |  [Next: Exercise: Goals](@next)
  */
